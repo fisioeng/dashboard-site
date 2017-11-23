@@ -2,14 +2,18 @@ FROM ruby:2.3
 MAINTAINER ronierison.silva@gmail.com
 
 RUN apt-get update && apt-get install -y \ 
-  build-essential \ 
-  nodejs
+  	build-essential \ 
+  	nodejs
 
-RUN mkdir -p /app 
-WORKDIR /app
+RUN mkdir -p /opt
+
+RUN git clone https://github.com/fisioeng/dashboard-site.git
+
+WORKDIR /opt/dashboard-site
 
 COPY Gemfile Gemfile.lock ./ 
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN gem install bundler 
+RUN bundle install --jobs 20 --retry 5
 
 COPY . ./
 
