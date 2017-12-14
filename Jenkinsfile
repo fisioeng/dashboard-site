@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'sudo yum install -y gcc ruby-devel zlib-devel'
+                sh 'apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev'
                 sh 'gem install bundler'
                 sh 'bundle install --without development test'
             }
