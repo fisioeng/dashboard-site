@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'gem install bundler'
-                sh 'bundle'
+                sh 'bundle install --without development test'
             }
         }
     }
