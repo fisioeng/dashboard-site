@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'apt-get update'
-                sh 'apt-get --assume-yes install build-essential patch ruby-dev zlib1g-dev liblzma-dev'
-                sh 'gem install bundler'
+            	sh 'gem install bundler'
                 sh 'bundle install --without development test'
             }
         }
