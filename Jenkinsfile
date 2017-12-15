@@ -1,15 +1,20 @@
 pipeline {
     agent { docker 'ruby' }
     stages {
-        stage('install dependencies') {
+        stage('Build') {
             steps {
             	sh 'gem install bundler'
                 sh 'bundle install'
             }
         }
-        stage('unit tests') {
+        stage('Tests') {
         	steps {
         		sh 'rspec'
+        	}
+        }
+        stage('Build Docker Container') {
+        	steps {
+        		sh 'docker --version'
         	}
         }
     }
