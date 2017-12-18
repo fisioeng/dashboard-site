@@ -23,11 +23,11 @@ pipeline {
         		sh 'git archive --format=tar master | gzip > build/dashboard-site-$BUILD_NUMBER.tar.gz'
         	}
         }
-        post {
-	        always {
-	            archive 'build/**/*.html'
-	            archive 'build/**/*.tar.gz'
-	        }
-	    }
+    }
+    post {
+        always {
+            archive 'build/**/*.html'
+            archive 'build/**/*.tar.gz'
+        }
     }
 }
