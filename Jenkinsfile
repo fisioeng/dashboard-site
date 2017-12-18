@@ -5,6 +5,7 @@ pipeline {
             steps {
             	sh 'gem install bundler'
                 sh 'bundle install'
+                sh 'mkdir -p build'
             }
         }
         stage('Tests') {
@@ -12,10 +13,21 @@ pipeline {
         		sh 'rspec'
         	}
         }
-        stage('Build Docker Container') {
+        stage('Save Tests Results') {
         	steps {
-        		sh 'docker --version'
+        		sh 'rspec --format html --out build/rspec_results.html'
         	}
         }
+        stage('Save Build Version') {
+        	steps {
+        		sh 'git archive --format=tar master | gzip > build/dashboard-site-$BUILD_NUMBER.tar.gz'
+        	}
+        }
+        post {
+	        always {
+	            archive 'build/**/*.html'
+	            archive 'build/**/*.tar.gz'
+	        }
+	    }
     }
 }
