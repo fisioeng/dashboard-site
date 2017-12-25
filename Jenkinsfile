@@ -1,33 +1,33 @@
 pipeline {
     agent { docker 'ruby' }
     stages {
-        stage('Build') {
+        stage('Building Dependencies') {
             steps {
             	sh 'gem install bundler'
                 sh 'bundle install'
-                sh 'mkdir -p build'
             }
         }
-        stage('Tests') {
+        stage('Running Rspec') {
         	steps {
         		sh 'rspec'
         	}
         }
-        stage('Save Tests Results') {
+        stage('Saving Tests Results') {
         	steps {
-        		sh 'rspec --format html --out build/rspec_results.html'
+        		sh 'rspec --format html --out rspec_results.html'
         	}
         }
-        stage('Save Build Version') {
+        stage('Saving Build Version') {
         	steps {
-        		sh 'git archive --format=tar master | gzip > build/dashboard-site-$BUILD_NUMBER.tar.gz'
+        		sh 'git archive --format=tar master | gzip > dashboard-site-$BUILD_NUMBER.tar.gz'
         	}
         }
     }
     post {
         always {
-            archive 'build/**/*.html'
-            archive 'build/**/*.tar.gz'
+            archive 'rspec_results.html'
+            archive 'Dockerfile'
+            archive 'dashboard-site-$BUILD_NUMBER.tar.gz'
         }
     }
 }
