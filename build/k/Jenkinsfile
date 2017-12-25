@@ -23,6 +23,7 @@ pipeline {
         	steps {
         		sh 'git archive --format=tar ${GIT_COMMIT} --output=build/dashboard-site.tar'
         		sh 'cp Dockerfile build/'
+        		sh 'ls -lsa build/'
         	}
         }
     }

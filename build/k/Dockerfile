@@ -9,9 +9,9 @@ RUN mkdir -p /opt
 
 WORKDIR /opt/dashboard-site
 
-COPY dashboard-site.tar .
+COPY dashboard-site-*.tar.gz .
 
-RUN tar -zxvf dashboard-site.tar
+RUN tar -zxvf dashboard-site-*.tar.gz
 
 RUN gem install bundler
 RUN bundle install --jobs 20 --retry 5
