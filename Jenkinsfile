@@ -6,6 +6,7 @@ pipeline {
             	sh 'gem install bundler'
                 sh 'bundle install'
                 sh 'mkdir -p build/'
+                sh 'rm -rf build/*'
             }
         }
         stage('Running Rspec') {
@@ -20,7 +21,8 @@ pipeline {
         }
         stage('Saving Build Version') {
         	steps {
-        		sh 'git archive --format=tar master | gzip > build/dashboard-site-$BUILD_NUMBER.tar.gz'
+        		sh "git archive --format=tar master | gzip > build/dashboard-site-${BUILD_NUMBER}.tar.gz"
+        		sh 'cp Dockerfile build/'
         	}
         }
     }
