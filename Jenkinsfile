@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Saving Build Version') {
         	steps {
-        		sh 'git archive --format=tar ${GIT_COMMIT} > build/dashboard-site-${BUILD_NUMBER}.tar'
+        		sh 'git archive --format=tar ${GIT_COMMIT} --output=build/dashboard-site-${BUILD_NUMBER}.tar'
         		sh 'cp Dockerfile build/'
         		sh 'ls -lsa build/'
         	}
