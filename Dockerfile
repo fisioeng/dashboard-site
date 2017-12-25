@@ -11,7 +11,7 @@ WORKDIR /opt/dashboard-site
 
 COPY dashboard-site.tar .
 
-RUN tar -zxvf dashboard-site.tar
+RUN tar -xf dashboard-site.tar
 
 RUN gem install bundler
 RUN bundle install --jobs 20 --retry 5
