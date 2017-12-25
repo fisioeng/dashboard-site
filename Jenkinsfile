@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Saving Build Version') {
         	steps {
-        		sh 'git archive --format=tar master | gzip > dashboard-site-$BUILD_NUMBER.tar.gz'
+        		sh "git archive --format=tar master | gzip > dashboard-site-$BUILD_NUMBER.tar.gz"
         	}
         }
     }
@@ -27,7 +27,7 @@ pipeline {
         always {
             archive 'rspec_results.html'
             archive 'Dockerfile'
-            archive 'dashboard-site-$BUILD_NUMBER.tar.gz'
+            archive "dashboard-site-$BUILD_NUMBER.tar.gz"
         }
     }
 }
