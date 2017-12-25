@@ -27,8 +27,7 @@ pipeline {
     post {
         always {
             archive 'rspec_results.html'
-            archive 'build/Dockerfile'
-            archive 'build/dashboard-site-$BUILD_NUMBER.tar.gz'
+            archive 'build/**/*'
         }
     }
 }
