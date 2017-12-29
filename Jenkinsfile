@@ -11,7 +11,9 @@ pipeline {
             }
         }
         stage('Set Up Database') {
-            sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
+            steps {
+                sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
+            }
         }
         stage('Running Rspec') {
         	steps {
