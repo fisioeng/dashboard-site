@@ -7,6 +7,7 @@ pipeline {
                 sh 'bundle install'
                 sh 'mkdir -p build/'
                 sh 'rm -rf build/*'
+                sh 'apt-get update && apt-get install nodejs'
                 sh 'curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose'
                 sh 'chmod +x /usr/local/bin/docker-compose'
                 sh 'docker-compose --version'
