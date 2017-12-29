@@ -10,14 +10,18 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'pg', '~> 0.21.0'
-
+gem 'activeadmin'
+gem 'devise'
+gem 'turbolinks', '~> 5.0.0'
 gem 'jbuilder', '~> 2.5'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :development do

@@ -5,10 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
+  host: 0.0.0.0
   adapter: postgresql
   encoding: unicode
   database: dev_dashboard_site
   pool: 5
+  username: admin
+  password: admin
 
 development:
   <<: *default
