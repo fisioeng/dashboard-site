@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Set Up Database') {
             steps {
+                sh 'initdb'
                 sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
             }
         }
