@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'ruby' }
+    agent { docker 'ruby:2.3' }
     stages {
         stage('Building and Running Dependencies') {
             steps {
