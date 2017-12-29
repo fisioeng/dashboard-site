@@ -1,12 +1,13 @@
 pipeline {
     agent { docker 'ruby' }
     stages {
-        stage('Building Dependencies') {
+        stage('Building and Running Dependencies') {
             steps {
             	sh 'gem install bundler'
                 sh 'bundle install'
                 sh 'mkdir -p build/'
                 sh 'rm -rf build/*'
+                sh 'docker-compose up -d'
             }
         }
         stage('Running Rspec') {
