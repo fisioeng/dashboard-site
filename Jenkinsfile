@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Building and Running Dependencies') {
             steps {
-            	sh 'apt-get update && apt-get install nodejs'
+            	sh 'apt-get update && apt-get install -y nodejs'
                 sh 'gem install bundler'
                 sh 'bundle install'
                 sh 'mkdir -p build/'
