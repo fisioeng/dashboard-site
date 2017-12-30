@@ -3,17 +3,12 @@ pipeline {
     stages {
         stage('Building and Running Dependencies') {
             steps {
-            	sh 'apt-get update && apt-get install -y nodejs postgresql postgresql-contrib'
+            	sh 'apt-get update && apt-get install -y nodejs postgresql-9.6 postgresql-contrib-9.6'
+                sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
                 sh 'gem install bundler'
                 sh 'bundle install'
                 sh 'mkdir -p build/'
                 sh 'rm -rf build/*'
-            }
-        }
-        stage('Set Up Database') {
-            steps {
-                sh 'initdb'
-                sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
             }
         }
         stage('Running Rspec') {
