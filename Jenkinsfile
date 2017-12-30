@@ -4,7 +4,6 @@ pipeline {
         stage('Building and Running Dependencies') {
             steps {
             	sh 'apt-get update && apt-get install -y nodejs postgresql postgresql-contrib sudo'
-                sh 'cat /etc/postgresql/9.4/main/postgresql.conf'
                 sh 'sudo service postgresql start'
                 sh 'sudo -u postgres psql -c "CREATE USER admin WITH PASSWORD \'admin\' CREATEDB;"'
                 sh 'gem install bundler'
