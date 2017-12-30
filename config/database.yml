@@ -3,6 +3,7 @@ default: &default
   host: 0.0.0.0
   adapter: postgresql
   encoding: utf8
+  template: template0
   database: dev_dashboard_site
   pool: 5
   username: admin
