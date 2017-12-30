@@ -46,3 +46,8 @@ bower.json
 
 *.pem
 *.tar.gz
+
+
+public/assets/*
+public/system/*
+public/uploads/*
