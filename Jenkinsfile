@@ -5,7 +5,8 @@ pipeline {
             steps {
             	sh 'apt-get update && apt-get install -y nodejs postgresql postgresql-contrib sudo'
                 sh 'cat /etc/postgresql/9.4/main/postgresql.conf'
-                sh 'which pg_ctl'
+                sh 'which postgres'
+                sh 'type postgres'
                 sh 'sudo -u postgres $(which pg_ctl) --version'
                 sh 'sudo -u postgres $(which pg_ctl) start -l logfile'
                 sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
