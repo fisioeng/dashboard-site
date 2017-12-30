@@ -4,8 +4,8 @@ default: &default
   adapter: postgresql
   encoding: utf8
   template: template0
-  database: dev_dashboard_site
   pool: 5
+  database: dev_dashboard_site
   username: admin
   password: admin
 
@@ -18,5 +18,11 @@ test:
   database: test_dashboard_site
 
 production:
-  <<: *default
-  database: prod_dashboard_site
+  adapter: postgresql
+  encoding: utf8
+  template: template0
+  pool: 5
+  host: <%= ENV['FDS_DB_HOST'] %>
+  database: <%= ENV['FDS_DB_NAME'] %>
+  username: <%= ENV['FDS_DB_USERNAME'] %>
+  password: <%= ENV['FDS_DB_PASSWORD'] %>
