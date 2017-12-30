@@ -6,7 +6,7 @@ pipeline {
             	sh 'apt-get update && apt-get install -y nodejs postgresql postgresql-contrib sudo'
                 sh 'cat /etc/postgresql/9.4/main/postgresql.conf'
                 sh 'sudo service postgresql start'
-                sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
+                sh 'sudo -u postgres psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
                 sh 'gem install bundler'
                 sh 'bundle install'
                 sh 'mkdir -p build/'
