@@ -16,8 +16,6 @@ RUN tar -xf dashboard-site.tar
 RUN gem install bundler
 RUN bundle install --jobs 20 --retry 5
 
-RUN RAILS_ENV=production rake db:migrate
-
 COPY . ./
 
 EXPOSE 80
