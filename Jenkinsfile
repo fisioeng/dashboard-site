@@ -4,8 +4,8 @@ pipeline {
         stage('Building and Running Dependencies') {
             steps {
             	sh 'apt-get update && apt-get install -y nodejs postgresql postgresql-contrib'
-                sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
                 sh 'postgres -v'
+                sh 'psql -c "CREATE USER admin WITH PASSWORD \'admin\';"'
                 sh 'gem install bundler'
                 sh 'bundle install'
                 sh 'mkdir -p build/'
