@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Running Rspec') {
         	steps {
+                sh 'RAILS_ENV=test rake db:create db:migrate'
         		sh 'rspec'
         	}
         }
