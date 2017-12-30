@@ -20,4 +20,4 @@ COPY . ./
 
 EXPOSE 80
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "80"]
+CMD ["bundle", "exec", "puma", "-p", "80", "-e", "production"]
