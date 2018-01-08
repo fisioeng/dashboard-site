@@ -9,5 +9,21 @@
 	<%= javascript_include_tag 'landing_page', 'data-turbolinks-track' => false %>
   <body>
     <%= yield %>
+
+    <script type="text/javascript">
+        'use strict';
+        $.backstretch(
+          [
+              "<%= image_path('landing_page/bg1.jpg') %>",
+              "<%= image_path('landing_page/bg2.jpg') %>",
+              "<%= image_path('landing_page/bg3.png') %>"
+          ],
+
+          {
+              duration: 4500,
+              fade: 1500
+          }
+      );
+    </script>
   </body>
 </html>
