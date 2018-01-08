@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'dashboard#index'
+  root 'landing_page#index' 
+
+  get "/dashboard", to: 'dashboard#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

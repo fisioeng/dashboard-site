@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>José Roniérison</title>
-</head>
-<body>
-	<center>
-		<h1>Hi, <%= current_user.name %></h1>
-		<p>I am in continuos work to provide some stuff to help your studies. <br /> 
-			Feel free to help sending PR to <a href="https://github.com/fisioeng/dashboard-site">Github</a>
-		</p>
-		<%= button_to "Logout", destroy_user_session_path, :method => :delete %>
-	</center>
-</body>
-</html>
+<% content_for 'title' do %>
+	Dashboard
+<% end %>
+
+<center>
+	<h1>Hi, <%= current_user.name %></h1>
+	<p>I am in continuos work to provide some stuff to help your studies. <br /> 
+		Feel free to help sending PR to <a href="https://github.com/fisioeng/dashboard-site">Github</a>
+	</p>
+	<%= button_to "Logout", destroy_user_session_path, :method => :delete %>
+</center>
